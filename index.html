@@ -5,67 +5,56 @@
   <title>Valentine's Day Special</title>
   <style>
     body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #ffcccb;
-  color: #333;
-}
-
-header {
-  background-color: #ff99aa;
-  padding: 20px;
-}
-
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin-right: 20px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #fff;
-}
-
-.section {
-  padding: 50px;
-}
-
-.btn {
-  background-color: #ff99aa;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #ff6666;
-}
-
-.ideas-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.gifts-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-footer {
-  background-color: #ff99aa;
-  text-align: center;
-  padding: 20px;
-}
-
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffcccb;
+      color: #333;
+    }
+    header {
+      background-color: #ff99aa;
+      padding: 20px;
+    }
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+    }
+    .section {
+      padding: 50px;
+      text-align: center;
+    }
+    .btn {
+      background-color: #ff99aa;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #ff6666;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    footer {
+      background-color: #ff99aa;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
@@ -84,44 +73,101 @@ footer {
   <section id="home" class="section">
     <h1>Happy Valentine's Day!</h1>
     <p>Welcome to our Valentine's Day Planner.</p>
-    <button class="btn">Get Started</button>
+    <button class="btn" onclick="startQuiz()">Get Started</button>
   </section>
   
-  <section id="ideas" class="section">
-    <h2>Date Ideas</h2>
-    <div class="ideas-container">
-      <!-- Add date ideas here -->
+  <section id="quiz" class="section" style="display: none;">
+    <h2>Valentine's Day Quiz</h2>
+    <div id="questions" class="container">
+      <!-- Questions will be added here dynamically -->
     </div>
-  </section>
-  
-  <section id="gifts" class="section">
-    <h2>Gifts</h2>
-    <div class="gifts-container">
-      <!-- Add gift suggestions here -->
+    <div id="results" class="container" style="display: none;">
+      <!-- Results will be displayed here dynamically -->
     </div>
-  </section>
-  
-  <section id="reservation" class="section">
-    <h2>Reservation</h2>
-    <p>Book your romantic dinner reservation now.</p>
-    <button class="btn">Book Now</button>
-  </section>
-  
-  <section id="contact" class="section">
-    <h2>Contact Us</h2>
-    <p>Have questions? Reach out to us.</p>
-    <form>
-      <input type="text" placeholder="Name">
-      <input type="email" placeholder="Email">
-      <textarea placeholder="Message"></textarea>
-      <button type="submit" class="btn">Send</button>
-    </form>
   </section>
   
   <footer>
     <p>&copy; 2024 Valentine's Day Planner</p>
   </footer>
   
-  <script src="script.js"></script>
+  <script>
+    const questions = [
+      "What's your budget for Valentine's Day?",
+      "What type of activities do you enjoy as a couple?",
+      "Do you prefer a romantic dinner or an adventurous outing?",
+      "Would you like to exchange gifts?"
+    ];
+
+    const options = [
+      ["Low", "Medium", "High"],
+      ["Movie Night", "Outdoor Adventure", "Cooking Together"],
+      ["Romantic Dinner", "Adventure Park", "Picnic in the Park"],
+      ["Yes", "No"]
+    ];
+
+    const results = [
+      "For a cozy night in, you can have a movie night and cook dinner together.",
+      "You might enjoy an outdoor adventure followed by a picnic in the park.",
+      "A romantic dinner at a nice restaurant would be perfect for you.",
+      "Consider exchanging small gifts and going for an adventurous outing together."
+    ];
+
+    // Function to start the quiz
+    function startQuiz() {
+      const quizSection = document.getElementById("quiz");
+      quizSection.style.display = "block";
+
+      const questionsContainer = document.getElementById("questions");
+      questionsContainer.innerHTML = "";
+
+      // Dynamically add questions and options
+      for (let i = 0; i < questions.length; i++) {
+        const questionDiv = document.createElement("div");
+        questionDiv.innerHTML = `<p>${questions[i]}</p>`;
+
+        for (let j = 0; j < options[i].length; j++) {
+          const option = document.createElement("input");
+          option.type = "radio";
+          option.name = `question${i}`;
+          option.value = options[i][j];
+          option.id = `q${i}option${j}`;
+          const label = document.createElement("label");
+          label.htmlFor = `q${i}option${j}`;
+          label.textContent = options[i][j];
+
+          questionDiv.appendChild(option);
+          questionDiv.appendChild(label);
+        }
+
+        questionsContainer.appendChild(questionDiv);
+      }
+
+      const resultsContainer = document.getElementById("results");
+      resultsContainer.style.display = "none";
+    }
+
+    // Function to calculate and display results
+    function showResults() {
+      const answers = [];
+      for (let i = 0; i < questions.length; i++) {
+        const selectedOption = document.querySelector(`input[name="question${i}"]:checked`);
+        if (selectedOption) {
+          answers.push(selectedOption.value);
+        } else {
+          alert("Please answer all questions.");
+          return;
+        }
+      }
+
+      const score = calculateScore(answers);
+      const resultsContainer = document.getElementById("results");
+      resultsContainer.style.display = "block";
+      resultsContainer.innerHTML = `<p>${results[score]}</p>`;
+    }
+
+    function calculateScore(answers) {
+      return answers.length - 1;
+    }
+  </script>
 </body>
 </html>
