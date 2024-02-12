@@ -34,11 +34,17 @@
     .credit {
       font-size: 0.8em;
     }
+    /* Added styles for images */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 <body>
   <main>
     <h1>Happy Valentine's Day!</h1>
+    <img src="valentines-heart.jpg" alt="Heart">
     <p>Valentine's Day is a special occasion to celebrate love and affection. It's a time to express your feelings to your significant other, family, and friends. Whether you're in a romantic relationship or not, Valentine's Day is an opportunity to spread love and kindness.</p>
     <p class="quote">"Love is composed of a single soul inhabiting two bodies." - Aristotle</p>
     <p>On this website, you'll find some ideas and tips to make this Valentine's Day memorable:</p>
@@ -51,5 +57,12 @@
     </ul>
     <p class="credit">Website created with love by [Your Name]</p>
   </main>
+  <script>
+    // Script for animations
+    window.addEventListener('load', function() {
+      const heartImg = document.querySelector('img');
+      heartImg.classList.add('heart-animation');
+    });
+  </script>
 </body>
 </html>
