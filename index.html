@@ -5,64 +5,123 @@
   <title>Valentine's Day Special</title>
   <style>
     body {
-      margin: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-color: #ffcccb;
-      border: 15px solid #ff99aa;
-      position: relative;
-    }
-    main {
-      text-align: center;
-      font-family: Arial, sans-serif;
-      color: #333; /* Dark gray text color */
-    }
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.2em;
-      line-height: 1.6;
-      margin-bottom: 30px;
-    }
-    .quote {
-      font-style: italic;
-    }
-    .credit {
-      font-size: 0.8em;
-    }
-    /* Added styles for images */
-    img {
-      max-width: 100%;
-      height: auto;
-    }
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffcccb;
+  color: #333;
+}
+
+header {
+  background-color: #ff99aa;
+  padding: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.section {
+  padding: 50px;
+}
+
+.btn {
+  background-color: #ff99aa;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #ff6666;
+}
+
+.ideas-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.gifts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+footer {
+  background-color: #ff99aa;
+  text-align: center;
+  padding: 20px;
+}
+
   </style>
 </head>
 <body>
-  <main>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#ideas">Date Ideas</a></li>
+        <li><a href="#gifts">Gifts</a></li>
+        <li><a href="#reservation">Reservation</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <section id="home" class="section">
     <h1>Happy Valentine's Day!</h1>
-    <img src="valentines-heart.jpg" alt="Heart">
-    <p>Valentine's Day is a special occasion to celebrate love and affection. It's a time to express your feelings to your significant other, family, and friends. Whether you're in a romantic relationship or not, Valentine's Day is an opportunity to spread love and kindness.</p>
-    <p class="quote">"Love is composed of a single soul inhabiting two bodies." - Aristotle</p>
-    <p>On this website, you'll find some ideas and tips to make this Valentine's Day memorable:</p>
-    <ul>
-      <li>Plan a romantic dinner at home or reserve a table at a fancy restaurant.</li>
-      <li>Write a heartfelt love letter or create a personalized gift.</li>
-      <li>Enjoy a movie night with your loved one, complete with popcorn and cozy blankets.</li>
-      <li>Take a stroll in the park or go for a hike together.</li>
-      <li>Organize a virtual gathering with friends for a fun Valentine's Day celebration.</li>
-    </ul>
-    <p class="credit">Website created with love by [Your Name]</p>
-  </main>
-  <script>
-    // Script for animations
-    window.addEventListener('load', function() {
-      const heartImg = document.querySelector('img');
-      heartImg.classList.add('heart-animation');
-    });
-  </script>
+    <p>Welcome to our Valentine's Day Planner.</p>
+    <button class="btn">Get Started</button>
+  </section>
+  
+  <section id="ideas" class="section">
+    <h2>Date Ideas</h2>
+    <div class="ideas-container">
+      <!-- Add date ideas here -->
+    </div>
+  </section>
+  
+  <section id="gifts" class="section">
+    <h2>Gifts</h2>
+    <div class="gifts-container">
+      <!-- Add gift suggestions here -->
+    </div>
+  </section>
+  
+  <section id="reservation" class="section">
+    <h2>Reservation</h2>
+    <p>Book your romantic dinner reservation now.</p>
+    <button class="btn">Book Now</button>
+  </section>
+  
+  <section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <p>Have questions? Reach out to us.</p>
+    <form>
+      <input type="text" placeholder="Name">
+      <input type="email" placeholder="Email">
+      <textarea placeholder="Message"></textarea>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </section>
+  
+  <footer>
+    <p>&copy; 2024 Valentine's Day Planner</p>
+  </footer>
+  
+  <script src="script.js"></script>
 </body>
 </html>
