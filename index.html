@@ -38,15 +38,10 @@
       padding: 10px 20px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      margin: 10px;
     }
     .btn:hover {
       background-color: #ff6666;
-    }
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
     }
     footer {
       background-color: #ff99aa;
@@ -56,39 +51,10 @@
       bottom: 0;
       width: 100%;
     }
-    /* Hide quiz section by default */
-    #quiz {
-      display: none;
-    }
-    /* Style for answer buttons */
-    .answer-btn {
-      background-color: #ff99aa;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .answer-btn:hover {
-      background-color: #ff6666;
-    }
-    /* Additional styles for visual enhancements */
     .heart {
       font-size: 48px;
       color: #ff6666;
       margin-bottom: 20px;
-    }
-    .idea {
-      margin-top: 20px;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      width: 80%;
-    }
-    .idea p {
-      font-size: 18px;
     }
   </style>
 </head>
@@ -96,11 +62,10 @@
   <header>
     <nav>
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#ideas">Date Ideas</a></li>
-        <li><a href="#gifts">Gifts</a></li>
-        <li><a href="#reservation">Reservation</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="date_ideas.html">Date Ideas</a></li>
+        <li><a href="dinner_ideas.html">Dinner Ideas</a></li>
+        <li><a href="dessert_ideas.html">Dessert Ideas</a></li>
+        <li><a href="gift_ideas.html">Gift Ideas</a></li>
       </ul>
     </nav>
   </header>
@@ -109,240 +74,10 @@
     <div class="heart">&hearts;</div>
     <h1>Happy Valentine's Day!</h1>
     <p>Welcome to our Valentine's Day Planner.</p>
-    <button class="btn" onclick="startQuiz()">Get Started</button>
-  </section>
-  
-  <section id="quiz" class="section">
-    <h2 id="questionTitle" class="container"></h2>
-    <div id="questions" class="container"></div>
-    <div id="results" class="container" style="display: none;"></div>
   </section>
   
   <footer>
     <p>&copy; 2024 Valentine's Day Planner</p>
   </footer>
-  
-  <script>
-    const questions = [
-      "What's your budget for Valentine's Day?",
-      "What type of activity do you prefer?",
-      "What type of cuisine would you like for dinner?",
-      "What type of dessert would you like?",
-      "What type of gift would you prefer?",
-      "Do you want to include any specific dietary preferences?",
-      "Do you prefer indoor or outdoor activities?",
-      "How adventurous do you want your date to be?",
-      "What's your favorite color?",
-      "Do you have any favorite movies or TV shows?"
-    ];
-
-    const options = [
-      ["Low", "Medium", "High"],
-      ["Outdoor Adventure", "Romantic Dinner", "Creative Date", "Stay at Home"],
-      ["Italian Cuisine", "Mexican Cuisine", "Asian Cuisine", "American Cuisine"],
-      ["Cake", "Ice Cream", "Fruit", "Chocolate"],
-      ["Experience (e.g., spa day)", "Jewelry", "Tech gadgets", "Books"],
-      ["None", "Vegetarian", "Vegan", "Gluten-free"],
-      ["Indoor", "Outdoor"],
-      ["Low-key", "Moderate", "Adventurous"],
-      ["Red", "Blue", "Pink", "Other"],
-      ["Yes", "No"]
-    ];
-
-    const results = {
-      Low: {
-        activity: {
-          "Outdoor Adventure": "You have a lovely picnic in the park with sandwiches and lemonade, followed by a romantic stroll.",
-          "Romantic Dinner": "Enjoy a cozy dinner at a local diner or fast-food restaurant, followed by a movie night at home.",
-          "Creative Date": "You spend the evening cooking a simple meal together at home and then enjoy a board game or DIY craft project."
-        },
-        dinner: {
-          "Italian Cuisine": "You order pizza or pasta from a nearby Italian restaurant and enjoy a candlelit dinner at home.",
-          "Mexican Cuisine": "You have a casual taco night at home, complete with homemade guacamole and margaritas.",
-          "Asian Cuisine": "You cook a simple stir-fry or noodle dish together at home using ingredients from your local grocery store.",
-          "American Cuisine": "You have a burger and fries night at home, making gourmet burgers with all the fixings."
-        },
-        dessert: {
-          "Cake": "You bake a simple cake or cupcakes together at home, decorating them with frosting and sprinkles.",
-          "Ice Cream": "You enjoy a classic ice cream sundae bar at home, with all your favorite toppings.",
-          "Fruit": "You make a fruit salad together with fresh fruit from your local market, drizzled with honey or chocolate.",
-          "Chocolate": "You indulge in a chocolate fondue night at home, dipping strawberries, bananas, and marshmallows."
-        },
-        gift: {
-          "Experience (e.g., spa day)": "You plan a DIY spa day at home, complete with homemade face masks and massages.",
-          "Jewelry": "You exchange handmade gifts or sentimental items like photo albums or scrapbooks.",
-          "Tech gadgets": "You buy each other budget-friendly gadgets like phone accessories or portable speakers.",
-          "Books": "You exchange your favorite books or spend the evening reading together by candlelight."
-        }
-      },
-      Medium: {
-        activity: {
-          "Outdoor Adventure": "You go hiking or biking together in a nearby nature reserve, followed by a picnic lunch.",
-          "Romantic Dinner": "Enjoy a candlelit dinner at a mid-range restaurant with a cozy ambiance and live music.",
-          "Creative Date": "You attend a paint and sip class together, where you create art while enjoying wine and snacks."
-        },
-        dinner: {
-          "Italian Cuisine": "You dine at a casual Italian restaurant, enjoying classics like pasta and pizza.",
-          "Mexican Cuisine": "You have a festive dinner at a Mexican restaurant, indulging in tacos, enchiladas, and margaritas.",
-          "Asian Cuisine": "You try out a new sushi restaurant, sampling a variety of rolls and sashimi.",
-          "American Cuisine": "You dine at a popular diner or family-style restaurant, enjoying comfort food classics."
-        },
-        dessert: {
-          "Cake": "You visit a local bakery for a slice of decadent cake or dessert of your choice.",
-          "Ice Cream": "You stop by an artisanal ice cream shop for gourmet sundaes or milkshakes.",
-          "Fruit": "You end your meal with a fruit tart or fruit parfait at a cozy café.",
-          "Chocolate": "You splurge on a box of luxury chocolates from a specialty chocolatier."
-        },
-        gift: {
-          "Experience (e.g., spa day)": "You treat each other to a couples massage or a day at a nearby spa and wellness center.",
-          "Jewelry": "You shop for elegant jewelry pieces like bracelets or necklaces at a local boutique.",
-          "Tech gadgets": "You surprise each other with the latest gadgets or accessories, such as smartwatches or wireless headphones.",
-          "Books": "You visit a bookstore together and pick out books that reflect each other's interests or passions."
-        }
-      },
-      High: {
-        activity: {
-          "Outdoor Adventure": "You go on an exciting outdoor adventure like hot air ballooning or skydiving, followed by a gourmet picnic.",
-          "Romantic Dinner": "Indulge in a luxurious dining experience at a fine-dining restaurant with exquisite cuisine and impeccable service.",
-          "Creative Date": "You attend a high-end cooking class or private chef's dinner, learning to prepare gourmet dishes together."
-        },
-        dinner: {
-          "Italian Cuisine": "Dine at a Michelin-starred Italian restaurant, savoring authentic dishes crafted by renowned chefs.",
-          "Mexican Cuisine": "Enjoy a lavish dinner at a high-end Mexican restaurant, with innovative dishes and top-shelf tequila.",
-          "Asian Cuisine": "Experience a private dining experience at an exclusive Asian fusion restaurant, featuring bespoke menus and VIP treatment.",
-          "American Cuisine": "Dine at an upscale steakhouse or seafood restaurant, indulging in premium cuts of meat and fresh seafood."
-        },
-        dessert: {
-          "Cake": "Order a custom-designed cake from a luxury bakery, featuring intricate decorations and gourmet flavors.",
-          "Ice Cream": "Indulge in a luxurious ice cream tasting experience at a boutique creamery, sampling artisanal flavors and toppings.",
-          "Fruit": "Enjoy a fruit platter featuring rare and exotic fruits, served alongside champagne or sparkling wine.",
-          "Chocolate": "Treat yourselves to a private chocolate tasting session with a master chocolatier, sampling rare and imported chocolates."
-        },
-        gift: {
-          "Experience (e.g., spa day)": "Book a luxurious spa retreat or wellness getaway at a luxury resort or destination spa.",
-          "Jewelry": "Surprise your partner with a stunning piece of fine jewelry, such as a diamond necklace or designer watch.",
-          "Tech gadgets": "Gift each other the latest cutting-edge technology, such as premium smartphones or high-end gadgets.",
-          "Books": "Invest in limited edition collector's books or rare manuscripts, tailored to your partner's interests and passions."
-        }
-      }
-    };
-
-    let currentQuestionIndex = 0;
-    let selectedBudget = "";
-
-    function startQuiz() {
-      document.getElementById("home").style.display = "none";
-      document.getElementById("quiz").style.display = "block";
-      displayQuestion(currentQuestionIndex);
-    }
-
-    function displayQuestion(index) {
-      const questionTitle = document.getElementById("questionTitle");
-      questionTitle.textContent = questions[index];
-
-      const questionsContainer = document.getElementById("questions");
-      questionsContainer.innerHTML = "";
-
-      const optionsList = options[index];
-
-      optionsList.forEach(option => {
-        const answerButton = document.createElement("button");
-        answerButton.textContent = option;
-        answerButton.classList.add("answer-btn");
-        answerButton.addEventListener("click", () => selectAnswer(option));
-        questionsContainer.appendChild(answerButton);
-      });
-    }
-
-    function selectAnswer(answer) {
-      if (currentQuestionIndex === 0) {
-        selectedBudget = answer;
-      } else if (currentQuestionIndex === 1) {
-        if (selectedBudget === "Low") {
-          if (answer === "Outdoor Adventure") {
-            questions.splice(2, 0, "How adventurous do you want your date to be?");
-            options.splice(2, 0, ["Low-key", "Moderate"]);
-          } else {
-            questions.splice(2, 0, "Do you prefer indoor or outdoor activities?");
-            options.splice(2, 0, ["Indoor", "Outdoor"]);
-          }
-        } else if (selectedBudget === "Medium") {
-          if (answer === "Outdoor Adventure") {
-            questions.splice(2, 0, "How adventurous do you want your date to be?");
-            options.splice(2, 0, ["Low-key", "Moderate"]);
-          } else {
-            questions.splice(2, 0, "What's your favorite color?");
-            options.splice(2, 0, ["Red", "Blue", "Pink", "Other"]);
-          }
-        } else if (selectedBudget === "High") {
-          if (answer === "Outdoor Adventure") {
-            questions.splice(2, 0, "How adventurous do you want your date to be?");
-            options.splice(2, 0, ["Low-key", "Moderate", "Adventurous"]);
-          } else {
-            questions.splice(2, 0, "Do you have any favorite movies or TV shows?");
-            options.splice(2, 0, ["Yes", "No"]);
-          }
-        }
-      } else if (currentQuestionIndex === 3) {
-        if (selectedBudget === "Low") {
-          if (answer === "Cake") {
-            questions.splice(4, 0, "Do you want to include any specific dietary preferences?");
-            options.splice(4, 0, ["None", "Vegetarian", "Vegan", "Gluten-free"]);
-          } else {
-            questions.splice(4, 0, "Do you prefer indoor or outdoor activities?");
-            options.splice(4, 0, ["Indoor", "Outdoor"]);
-          }
-        } else if (selectedBudget === "Medium") {
-          if (answer === "Cake") {
-            questions.splice(4, 0, "Do you want to include any specific dietary preferences?");
-            options.splice(4, 0, ["None", "Vegetarian", "Vegan", "Gluten-free"]);
-          } else {
-            questions.splice(4, 0, "Do you have any favorite movies or TV shows?");
-            options.splice(4, 0, ["Yes", "No"]);
-          }
-        } else if (selectedBudget === "High") {
-          if (answer === "Cake") {
-            questions.splice(4, 0, "Do you want to include any specific dietary preferences?");
-            options.splice(4, 0, ["None", "Vegetarian", "Vegan", "Gluten-free"]);
-          } else {
-            questions.splice(4, 0, "What's your favorite color?");
-            options.splice(4, 0, ["Red", "Blue", "Pink", "Other"]);
-          }
-        }
-      }
-
-      currentQuestionIndex++;
-      if (currentQuestionIndex < questions.length) {
-        displayQuestion(currentQuestionIndex);
-      } else {
-        displayResults();
-      }
-    }
-
-    function displayResults() {
-      const resultsContainer = document.getElementById("results");
-      resultsContainer.style.display = "block";
-      resultsContainer.innerHTML = "";
-
-      const activityResult = results[selectedBudget].activity[document.querySelectorAll('.answer-btn')[1].textContent];
-      const dinnerResult = results[selectedBudget].dinner[document.querySelectorAll('.answer-btn')[2].textContent];
-      const dessertResult = results[selectedBudget].dessert[document.querySelectorAll('.answer-btn')[3].textContent];
-      const giftResult = results[selectedBudget].gift[document.querySelectorAll('.answer-btn')[4].textContent];
-
-      const ideaParagraph = document.createElement("div");
-      ideaParagraph.classList.add("idea");
-      ideaParagraph.innerHTML = `
-        <p>Date Idea:</p>
-        <p>${activityResult}</p>
-        <p>Dinner:</p>
-        <p>${dinnerResult}</p>
-        <p>Dessert:</p>
-        <p>${dessertResult}</p>
-        <p>Gift:</p>
-        <p>${giftResult}</p>
-      `;
-      resultsContainer.appendChild(ideaParagraph);
-    }
-  </script>
 </body>
 </html>
